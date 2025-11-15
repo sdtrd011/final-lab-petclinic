@@ -21,9 +21,13 @@ pipeline {
 
         stage('Build Jar') {
             steps {
-                sh 'chmod +x mvnw || true'
-                sh './mvnw clean package -DskipTests'
-                // Gradle 쓰면: ./gradlew clean bootJar
+                sh """
+                docker run --rm \
+                  -v \$PWD:/workspace \
+                  -w /workspace \
+                  maven:3.9.9-eclipse-temurin-25 \
+                  mvn -B clean package -DskipTests
+                """
             }
         }
 
