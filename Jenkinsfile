@@ -3,7 +3,8 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-northeast-1'
-        ECR_REPO  = '531875446373.dkr.ecr.ap-northeast-1.amazonaws.com/back1'
+        ECR_REGI  = '531875446373.dkr.ecr.ap-northeast-1.amazonaws.com'
+        ECR_REPO  = "${ECR_REGI}/back1"
         CLUSTER   = 'app-cluster'
         SERVICE   = 'svc-back1'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
@@ -46,12 +47,15 @@ pipeline {
                     aws configure set default.region ${AWS_REGION}
 
                     aws ecr get-login-password --region ${AWS_REGION} \
-                      | docker login --username AWS --password-stdin ${ECR_REPO%/*}
+                      | docker login --username AWS --password-stdin ${ECR_REPO}
 
                     docker push ${ECR_REPO}:${IMAGE_TAG}
                     docker push ${ECR_REPO}:latest
                     """
-                }
+
+
+                    
+             }
             }
         }
 
