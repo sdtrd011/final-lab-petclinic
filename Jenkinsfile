@@ -5,8 +5,8 @@ pipeline {
         AWS_REGION = 'ap-northeast-1'
         ECR_REGI  = '531875446373.dkr.ecr.ap-northeast-1.amazonaws.com'
         ECR_REPO  = "${ECR_REGI}/back1"
-        CLUSTER   = 'app-cluster'
-        SERVICE   = 'svc-back1'
+        CLUSTER   = 'final-lab-cluster'
+        SERVICE   = 'td-back1-service-8gpnmtwq'
         IMAGE_TAG = "${env.BUILD_NUMBER}"
     }
 
