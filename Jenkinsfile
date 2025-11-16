@@ -14,7 +14,7 @@ pipeline {
         ECR_REGISTRY = '531875446373.dkr.ecr.ap-northeast-1.amazonaws.com'
 
         ECR_REPO     = "${ECR_REGISTRY}/${TARGET}"      // front / back1 / back2
-        CLUSTER      = 'app-cluster'
+        CLUSTER      = 'final-lab-cluster'
         SERVICE      = "svc-${TARGET}"                  // svc-front / svc-back1 / svc-back2
         IMAGE_TAG    = "${env.BUILD_NUMBER}"
     }
