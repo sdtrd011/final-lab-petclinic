@@ -47,7 +47,7 @@ pipeline {
                     aws configure set default.region ${AWS_REGION}
                 
                     aws ecr get-login-password --region ${AWS_REGION} \
-                      | docker login --username AWS --password-stdin ${ECR_REGISTRY}
+                      | docker login --username AWS --password-stdin ${ECR_REGI}
                 
                     docker push ${ECR_REPO}:${IMAGE_TAG}
                     docker push ${ECR_REPO}:latest
